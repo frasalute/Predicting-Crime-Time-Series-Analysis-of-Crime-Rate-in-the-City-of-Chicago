@@ -1,5 +1,7 @@
 # Predicting-Crime-Time-Series-Analysis-of-Crime-Rate-in-the-City-of-Chicago
 
+(Done in a university setting as final exam of a Predictive Analysis class).
+
 Crime is defined as an act against the law because socially harmful and punishable by the state authorities, which influences a nation’s economy, reputation and quality of life (Sivapriya, Vijay Ganesh, Pradeeshwar&al, 2023).
 
 As presented by Mark Shaw, Jan van Dijk and Wolfgang Rhomberg in their 2003 paper “Determining trends in global crime and justice: an overview of results from the United Nations surveys of crime trends and operations of criminal justice systems”, the general trend of crime has been decreasing recent years in some areas of the world such as North America, remained stable in others, while some parts of
