@@ -1,4 +1,6 @@
 rm(list =ls())
+# The Chicago Crimes Dataset was extrapolated from the Chicago Data Portal and it considers data from 2001 
+# until seven days prior the export date, so in the case of this paper until the second week of May 2024.
 crime <- read.csv("insert_file_position_crime_data")
 install.packages("Amelia")
 library(Amelia)
