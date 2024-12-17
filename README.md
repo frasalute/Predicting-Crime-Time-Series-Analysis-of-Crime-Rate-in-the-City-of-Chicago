@@ -1,16 +1,89 @@
-# Predicting-Crime-Time-Series-Analysis-of-Crime-Rate-in-the-City-of-Chicago
+# Crime Rate Time Series Forecasting in Chicago
 
 (Done in a university setting as final exam of a Predictive Analysis class).
 
-Crime is defined as an act against the law because socially harmful and punishable by the state authorities, which influences a nation’s economy, reputation and quality of life (Sivapriya, Vijay Ganesh, Pradeeshwar&al, 2023).
+## Overview
+This project applies **time series analysis** to forecast crime rates in the city of **Chicago** using data from the Chicago Police Department's **CLEAR system**. The analysis focuses on identifying trends, seasonal patterns, and structural breaks in the historical crime data from **2003 to the present**.
 
-As presented by Mark Shaw, Jan van Dijk and Wolfgang Rhomberg in their 2003 paper “Determining trends in global crime and justice: an overview of results from the United Nations surveys of crime trends and operations of criminal justice systems”, the general trend of crime has been decreasing recent years in some areas of the world such as North America, remained stable in others, while some parts of
-the world still face a high proportion of violent crimes. In this paper the geographical focus will be on the United States of America, in particular on the city of Chicago.
+The project implements two forecasting models:
+- **SARIMA (Seasonal ARIMA):** Captures seasonality and autocorrelations in crime counts.
+- **Holt-Winters Model:** Implements both additive and multiplicative seasonality for exponential smoothing.
 
-Both the Federal Bureau of Investigation (FBI) and the Bureau of Investigation Statistics (BJS) have highlighted significant reductions in violent and property crime rates in the country since the early 1990s, but the population is still keen to believe crime is up and some areas are more dangerous than others (Gramlich, 2024). In Chicago for example the number of homicides in 2023 was 50% more than 10 years ago, with younger victims and not many criminals caught (Gowins&Josko, 2024).
+---
+## Key Features
+### 1. Exploratory Data Analysis (EDA)
+- Visualizations of crime trends over time.
+- Seasonality and subseries decomposition.
+- Box-Cox transformations for variance stabilization.
 
-Because of this, innovative technologies and predictive techniques are starting to be implemented on large scale in crime analytics, with the goal of better understand the phenomenon and prevent crime. Predictive policing is the name of one of these new implementations, where law enforcement use statistical data to predict which areas have higher probability of crime and guide them in decision making. These predictions come with many benefits such as better resource allocation and better identification of the people involved, but also drawbacks such as lack of transparency and stigmatization of some groups (Meijer&Wessels, 2019). 
+### 2. Stationarity Tests
+- **KPSS** and **Augmented Dickey-Fuller (ADF)** tests to ensure stationarity.
+- Seasonal differencing applied to stabilize data.
 
-Nevertheless, this study will not focus on the different results and ethics of the application but only on the technical fundamental part of forecasting. Starting from a dataset extracted from the Chicago Police Department’s CLEAR (Citizen Law Enforcement Analysis and Reporting) system, recording from 2001 to the present, the paper will attempt to forecast the total crime count in the years to come. This forecasting aims to determine future crime trends based on historical analysis. 
+### 3. Structural Break Analysis
+- Detection of structural breaks using **QLR** and **SIS** tests.
+- **CUSUM** and **MOSUM** tests for change point detection.
 
-The study will take into consideration major exogenous events' impact and the nature of crime itself, which is neither systematic nor entirely random (Yu, Ward, Morabito& Ding, 2011). To do the aimed forecasting two models will be used: AutoRegressive Integrated Moving Average (ARIMA), in particular Seasonal ARIMA, and Exponential Smoothing. These two models are the most widely used approaches in time series forecasting because they can provide complementary insights. Exponential Smoothing accounts for error, trend, and seasonality, while ARIMA can capture a huge range of patterns and describe the autocorrelation in the data (Hyndman&Athanasopoulos, 2018). These models apply greatly to crime data considering its seasonality pattern for different crimes and trends due to socio-economic changes, law enforcements practices and other factors.
+### 4. Model Fitting and Comparison
+- **SARIMA models** (e.g., ARIMA(1,1,1)(2,1,1)[12]).
+- **Holt-Winters additive and multiplicative** models.
+- Model diagnostics:
+  - Residuals analysis.
+  - Shapiro-Wilk test for normality.
+  - Ljung-Box test for autocorrelations.
+- Accuracy comparison using metrics:
+  - **AIC, BIC, RMSE.**
+
+### 5. Forecasting
+- Crime count forecasts for the **next 2 to 5 years**.
+- Visual comparison of actual data vs. predicted values.
+
+---
+## Libraries Used
+- **dplyr** and **lubridate** for data manipulation.
+- **ggplot2** and **gridExtra** for visualization.
+- **fpp3, forecast, strucchange,** and **urca** for time series modeling.
+- **HoltWinters** for exponential smoothing.
+
+---
+## How to Use
+### Step 1: Install Necessary R Libraries
+Run the following code to install required libraries:
+```r
+install.packages(c("dplyr", "lubridate", "ggplot2", "fpp3", "gridExtra", "urca", "strucchange", "forecast"))
+```
+
+### Step 2: Load and Prepare the Dataset
+Place the crime dataset in the appropriate directory and replace the file path:
+```r
+total_crime <- read.csv("insert_position_of_total_crime.csv")
+```
+
+### Step 3: Run the Script
+Execute the script step-by-step to:
+1. Visualize and preprocess the data.
+2. Perform stationarity tests and structural break analysis.
+3. Fit SARIMA and Holt-Winters models.
+4. Forecast future crime rates and compare model performance.
+
+---
+## Results
+- **SARIMA(1,1,1)(2,1,1)[12]** demonstrates the best performance based on **AIC/BIC** and accuracy metrics.
+- **Holt-Winters Multiplicative** also provides reliable results for seasonal forecasts.
+- Forecast comparison plots highlight predictions for the **next 2 to 5 years**, aiding decision-makers in crime prevention resource allocation.
+
+---
+## Dependencies
+- **R version ≥ 4.0.0**
+- Libraries:
+  - dplyr
+  - lubridate
+  - ggplot2
+  - fpp3
+  - urca
+  - strucchange
+  - forecast
+
+---
+## Acknowledgments
+- **Data source:** Chicago Police Department **CLEAR System.**
